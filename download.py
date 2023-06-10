@@ -81,13 +81,12 @@ for split, patches in [("train", 50 + 1), ("val", 43 + 1)]:
     print(f"Processing {split} in {patches} patches ...")
     images, labels = dir / "images" / split, dir / "labels" / split
     # Download
-    print(split)
 
     url = f"https://dorc.ks3-cn-beijing.ksyun.com/data-set/2020Objects365%E6%95%B0%E6%8D%AE%E9%9B%86/{split}/"
     if split == "train":
-        # download(
-        #     [f"{url}zhiyuan_objv2_{split}.tar.gz"], dir=dir, delete=False
-        # )  # annotations json
+        download(
+            [f"{url}zhiyuan_objv2_{split}.tar.gz"], dir=dir, delete=False
+        )  # annotations json
         download(
             [f"{url}patch{i}.tar.gz" for i in range(patches)],
             dir=images,
@@ -96,9 +95,9 @@ for split, patches in [("train", 50 + 1), ("val", 43 + 1)]:
             threads=8,
         )
     elif split == "val":
-        # download(#
-        #     [f"{url}zhiyuan_objv2_{split}.json"], dir=dir, delete=False
-        # )  # annotations json
+        download(#
+            [f"{url}zhiyuan_objv2_{split}.json"], dir=dir, delete=False
+        )  # annotations json
         download(
             [f"{url}images/v1/patch{i}.tar.gz" for i in range(15 + 1)],
             dir=images,
